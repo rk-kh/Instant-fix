@@ -37,7 +37,12 @@ app.use((req, res) => {
 });
 
 // ─── Start Server ─────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n✅  Smart Home Booking System running!`);
-  console.log(`🌐  Open: http://localhost:${PORT}\n`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`\n✅  Smart Home Booking System running!`);
+    console.log(`🌐  Open: http://localhost:${PORT}\n`);
+  });
+}
+
+// Export for Netlify Functions
+module.exports = app;
