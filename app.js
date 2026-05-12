@@ -36,8 +36,12 @@ app.use((req, res) => {
   res.status(404).render('404', { title: 'Page Not Found' });
 });
 
-// ─── Start Server ─────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n✅  Smart Home Booking System running!`);
-  console.log(`🌐  Open: http://localhost:${PORT}\n`);
-});
+// ─── Start Server (local dev only) ───────────────────────────────────────────
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`\n✅  Smart Home Booking System running!`);
+    console.log(`🌐  Open: http://localhost:${PORT}\n`);
+  });
+}
+
+module.exports = app;
