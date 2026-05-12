@@ -1,0 +1,124 @@
+<%- include('partials/header') %>
+
+<!-- ─── Page Hero ─────────────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container text-center">
+    <h1 class="page-hero-title" data-animate="fade-up">Our Services</h1>
+    <p class="page-hero-sub" data-animate="fade-up">
+      Professional home services delivered by verified experts — fast, reliable, and affordable.
+    </p>
+    <nav aria-label="breadcrumb" data-animate="fade-up">
+      <ol class="breadcrumb justify-content-center">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Services</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- ─── Services Grid ─────────────────────────────────────────────────────── -->
+<section class="section-pad">
+  <div class="container">
+
+    <!-- Search / Filter Bar -->
+    <div class="services-filter" data-animate="fade-up">
+      <input type="text" id="serviceSearch" class="form-control filter-input" placeholder="🔍  Search services..." />
+    </div>
+
+    <div class="row g-4 mt-1" id="servicesGrid">
+      <% services.forEach(function(service, idx) { %>
+      <div class="col-md-6 col-lg-4 service-item" data-animate="fade-up" style="animation-delay: <%= idx * 80 %>ms">
+        <div class="service-card service-card-lg">
+          <div class="service-card-img">
+            <img src="<%= service.image %>" alt="<%= service.title %>" loading="lazy" />
+            <% if (service.badge) { %>
+              <span class="service-badge"><%= service.badge %></span>
+            <% } %>
+            <div class="service-overlay">
+              <a href="/services" class="overlay-btn">
+                <i class="bi bi-eye"></i> View Details
+              </a>
+            </div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-icon-wrap">
+              <i class="bi <%= service.icon %>"></i>
+            </div>
+            <h5 class="service-card-title"><%= service.title %></h5>
+            <p class="service-card-desc"><%= service.description %></p>
+            <hr class="card-divider" />
+            <div class="service-card-footer">
+              <span class="service-price fw-bold"><%= service.price %></span>
+              <div class="service-card-actions">
+                <a href="/register?service=<%= encodeURIComponent(service.title) %>" class="btn btn-book">
+                  <i class="bi bi-calendar-check"></i> Book Now
+                </a>
+                <a href="#" class="btn btn-details">
+                  <i class="bi bi-info-circle"></i> Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <!-- No results message -->
+    <div id="noResults" class="text-center py-5 d-none">
+      <i class="bi bi-search" style="font-size:3rem; color:#cbd5e1"></i>
+      <p class="mt-3 text-muted">No services found. Try a different keyword.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── How It Works ──────────────────────────────────────────────────────── -->
+<section class="section-pad bg-light-custom">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-tag">Simple Process</span>
+      <h2 class="section-title">How It Works</h2>
+    </div>
+    <div class="row g-4 mt-3 justify-content-center">
+      <% const steps = [
+        { num: '01', icon: 'bi-search', title: 'Choose a Service', desc: 'Browse our services and pick the one you need.' },
+        { num: '02', icon: 'bi-calendar2-check', title: 'Book & Schedule', desc: 'Fill the booking form and choose your preferred time.' },
+        { num: '03', icon: 'bi-person-badge', title: 'Pro Arrives', desc: 'A verified expert arrives at your door on time.' },
+        { num: '04', icon: 'bi-emoji-smile', title: 'Sit Back & Relax', desc: 'Get quality work done with a satisfaction guarantee.' }
+      ]; %>
+      <% steps.forEach(function(step, i) { %>
+      <div class="col-sm-6 col-lg-3" data-animate="fade-up" style="animation-delay: <%= i * 100 %>ms">
+        <div class="step-card">
+          <div class="step-number"><%= step.num %></div>
+          <div class="step-icon"><i class="bi <%= step.icon %>"></i></div>
+          <h6 class="step-title"><%= step.title %></h6>
+          <p class="step-desc"><%= step.desc %></p>
+        </div>
+        <% if (i < steps.length - 1) { %>
+        <div class="step-arrow d-none d-lg-block"><i class="bi bi-chevron-right"></i></div>
+        <% } %>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<script>
+// Live search filter for services
+document.getElementById('serviceSearch').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const items = document.querySelectorAll('.service-item');
+  let count = 0;
+  items.forEach(item => {
+    const title = item.querySelector('.service-card-title').textContent.toLowerCase();
+    const desc  = item.querySelector('.service-card-desc').textContent.toLowerCase();
+    const match = title.includes(query) || desc.includes(query);
+    item.style.display = match ? 'block' : 'none';
+    if (match) count++;
+  });
+  document.getElementById('noResults').classList.toggle('d-none', count > 0);
+});
+</script>
+
+<%- include('partials/footer') %>

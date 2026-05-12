@@ -1,0 +1,74 @@
+<%# views/partials/footer.ejs — Shared footer %>
+
+<!-- ─── Footer ────────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row gy-5">
+
+      <!-- Brand Column -->
+      <div class="col-lg-4">
+        <a class="footer-brand" href="/">
+          <i class="bi bi-house-gear-fill"></i> Fix<span>Now</span>
+        </a>
+        <p class="footer-tagline">
+          Your trusted partner for all home service needs. Professional, reliable, and always on time.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Services Column -->
+      <div class="col-sm-6 col-lg-2 offset-lg-1">
+        <h6 class="footer-heading">Services</h6>
+        <ul class="footer-links">
+          <li><a href="/services">AC Repair</a></li>
+          <li><a href="/services">Electrician</a></li>
+          <li><a href="/services">Plumbing</a></li>
+          <li><a href="/services">Mobile Repair</a></li>
+          <li><a href="/services">Home Cleaning</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Column -->
+      <div class="col-sm-6 col-lg-2">
+        <h6 class="footer-heading">Company</h6>
+        <ul class="footer-links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Our Services</a></li>
+          <li><a href="/register">Book Now</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Sign Up</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="col-lg-3">
+        <h6 class="footer-heading">Contact Us</h6>
+        <ul class="footer-contact">
+          <li><i class="bi bi-geo-alt-fill"></i> 12 Tech Street, Lahore, Pakistan</li>
+          <li><i class="bi bi-telephone-fill"></i> +92 300 1234567</li>
+          <li><i class="bi bi-envelope-fill"></i> support@fixnow.pk</li>
+          <li><i class="bi bi-clock-fill"></i> Mon–Sat: 8 AM – 9 PM</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; <%= new Date().getFullYear() %> FixNow. All rights reserved. Built with <i class="bi bi-heart-fill text-danger"></i> using Node.js + EJS</p>
+    </div>
+  </div>
+</footer>
+<!-- ─── End Footer ─────────────────────────────────────────────────────────── -->
+
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="/js/main.js"></script>
+</body>
+</html>

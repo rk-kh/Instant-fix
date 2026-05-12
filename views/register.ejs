@@ -1,0 +1,134 @@
+<%- include('partials/header') %>
+
+<!-- ─── Page Hero ─────────────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container text-center">
+    <h1 class="page-hero-title">Book a Service</h1>
+    <p class="page-hero-sub">Fill in your details and our experts will be at your door.</p>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Book Now</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- ─── Booking Form ──────────────────────────────────────────────────────── -->
+<section class="section-pad">
+  <div class="container">
+    <div class="row justify-content-center g-5">
+
+      <!-- Form Column -->
+      <div class="col-lg-7">
+        <div class="form-card" data-animate="fade-up">
+          <div class="form-card-header">
+            <i class="bi bi-calendar2-plus"></i>
+            <h4>Service Booking Form</h4>
+            <p>All fields are required</p>
+          </div>
+
+          <!-- Alert Messages -->
+          <% if (success) { %>
+          <div class="alert alert-success-custom" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <%= success %>
+          </div>
+          <% } %>
+          <% if (error) { %>
+          <div class="alert alert-error-custom" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <%= error %>
+          </div>
+          <% } %>
+
+          <form action="/register" method="POST" class="booking-form">
+
+            <!-- Name -->
+            <div class="form-group-custom">
+              <label for="name"><i class="bi bi-person"></i> Full Name</label>
+              <input type="text" id="name" name="name" class="form-control custom-input"
+                placeholder="e.g. Ahmed Raza" required />
+            </div>
+
+            <!-- Email -->
+            <div class="form-group-custom">
+              <label for="email"><i class="bi bi-envelope"></i> Email Address</label>
+              <input type="email" id="email" name="email" class="form-control custom-input"
+                placeholder="e.g. ahmed@email.com" required />
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group-custom">
+              <label for="phone"><i class="bi bi-phone"></i> Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-control custom-input"
+                placeholder="e.g. 0300-1234567" required />
+            </div>
+
+            <!-- Service Type -->
+            <div class="form-group-custom">
+              <label for="serviceType"><i class="bi bi-tools"></i> Service Type</label>
+              <select id="serviceType" name="serviceType" class="form-select custom-select" required>
+                <option value="" disabled selected>— Select a Service —</option>
+                <% services.forEach(function(s) { %>
+                  <option value="<%= s.title %>"><%= s.title %> (<%= s.price %>)</option>
+                <% }) %>
+              </select>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group-custom">
+              <label for="address"><i class="bi bi-geo-alt"></i> Service Address</label>
+              <textarea id="address" name="address" class="form-control custom-input"
+                rows="3" placeholder="House #, Street, Area, City" required></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-submit-booking">
+              <i class="bi bi-calendar-check-fill"></i> Confirm Booking
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Sidebar Info -->
+      <div class="col-lg-5">
+        <div class="booking-sidebar" data-animate="fade-up" style="animation-delay:150ms">
+
+          <div class="sidebar-card">
+            <h5><i class="bi bi-info-circle text-primary"></i> How It Works</h5>
+            <ul class="sidebar-steps">
+              <li><span>1</span> Submit this form</li>
+              <li><span>2</span> Receive confirmation SMS/Email</li>
+              <li><span>3</span> Expert arrives at scheduled time</li>
+              <li><span>4</span> Service completed &amp; approved</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card mt-4">
+            <h5><i class="bi bi-shield-check text-success"></i> Our Guarantees</h5>
+            <ul class="guarantee-list">
+              <li><i class="bi bi-check2"></i> Verified &amp; background-checked professionals</li>
+              <li><i class="bi bi-check2"></i> Transparent, no-hidden-fee pricing</li>
+              <li><i class="bi bi-check2"></i> Free redo if you're not satisfied</li>
+              <li><i class="bi bi-check2"></i> 60-minute average response time</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card sidebar-contact mt-4">
+            <h5>Need Help?</h5>
+            <p>Call us directly to book or ask questions.</p>
+            <a href="tel:+923001234567" class="btn btn-call">
+              <i class="bi bi-telephone-fill"></i> +92 300 1234567
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

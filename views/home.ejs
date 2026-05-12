@@ -1,0 +1,172 @@
+<%- include('partials/header') %>
+
+<!-- ─── Hero Section ──────────────────────────────────────────────────────── -->
+<section class="hero-section">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-6 hero-content" data-animate="fade-up">
+        <div class="hero-badge">
+          <i class="bi bi-patch-check-fill"></i> Trusted by 10,000+ Customers
+        </div>
+        <h1 class="hero-title">
+          Your Home Deserves<br>
+          <span class="gradient-text">Expert Care</span>
+        </h1>
+        <p class="hero-subtitle">
+          From AC repairs to plumbing — book verified professionals in minutes.
+          Fast, affordable, and guaranteed quality service at your doorstep.
+        </p>
+        <div class="hero-cta">
+          <a href="/services" class="btn btn-hero-primary">
+            Explore Services <i class="bi bi-arrow-right"></i>
+          </a>
+          <a href="/register" class="btn btn-hero-outline">
+            Book Now <i class="bi bi-calendar-check"></i>
+          </a>
+        </div>
+        <!-- Stats Row -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">10K+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Experts</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">6</span>
+            <span class="stat-label">Service Types</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">4.9★</span>
+            <span class="stat-label">Rating</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 hero-visual d-none d-lg-block" data-animate="fade-left">
+        <div class="hero-image-wrapper">
+          <img
+            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=85"
+            alt="Home Service Professional"
+            class="hero-img"
+          />
+          <!-- Floating card -->
+          <div class="floating-card card-1">
+            <i class="bi bi-shield-check text-success"></i>
+            <div>
+              <strong>Verified Pros</strong>
+              <small>Background Checked</small>
+            </div>
+          </div>
+          <div class="floating-card card-2">
+            <i class="bi bi-clock-fill" style="color:var(--accent)"></i>
+            <div>
+              <strong>60 Min Response</strong>
+              <small>Guaranteed</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Services Overview ─────────────────────────────────────────────────── -->
+<section class="section-pad bg-light-custom">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Popular Services</h2>
+      <p class="section-sub">Choose from our most-booked home services — all in one place.</p>
+    </div>
+    <div class="row g-4 mt-2">
+      <% services.forEach(function(service) { %>
+      <div class="col-md-4" data-animate="fade-up">
+        <div class="service-card">
+          <div class="service-card-img">
+            <img src="<%= service.image %>" alt="<%= service.title %>" loading="lazy" />
+            <% if (service.badge) { %>
+              <span class="service-badge"><%= service.badge %></span>
+            <% } %>
+          </div>
+          <div class="service-card-body">
+            <div class="service-icon-wrap">
+              <i class="bi <%= service.icon %>"></i>
+            </div>
+            <h5 class="service-card-title"><%= service.title %></h5>
+            <p class="service-card-desc"><%= service.description %></p>
+            <div class="service-card-footer">
+              <span class="service-price"><%= service.price %></span>
+              <div class="service-card-actions">
+                <a href="/register?service=<%= service.title %>" class="btn btn-book">Book Now</a>
+                <a href="/services" class="btn btn-details">Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <div class="text-center mt-5">
+      <a href="/services" class="btn btn-see-all">See All Services <i class="bi bi-arrow-right-circle"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Why Choose Us ─────────────────────────────────────────────────────── -->
+<section class="section-pad why-section">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-tag">Why FixNow?</span>
+      <h2 class="section-title">Built Around Your Trust</h2>
+    </div>
+    <div class="row g-4 mt-3">
+      <% const features = [
+        { icon: 'bi-shield-fill-check', title: 'Verified Professionals', desc: 'Every technician undergoes a strict background check and skill verification before joining our platform.', color: '#10b981' },
+        { icon: 'bi-lightning-charge-fill', title: 'Fast Booking', desc: 'Book any service in under 2 minutes. No calls, no waiting — just pick, schedule, and relax.', color: '#f59e0b' },
+        { icon: 'bi-currency-rupee', title: 'Transparent Pricing', desc: 'No hidden charges. You see the price before you book. Pay only for what you ordered.', color: '#6366f1' },
+        { icon: 'bi-headset', title: '24/7 Support', desc: 'Our customer care team is available round the clock to handle any queries or concerns.', color: '#ef4444' },
+        { icon: 'bi-star-fill', title: 'Quality Guarantee', desc: "Not satisfied? We'll send another professional free of charge within 48 hours.", color: '#f97316' },
+        { icon: 'bi-geo-alt-fill', title: 'City-Wide Coverage', desc: 'Serving all major areas of Lahore, Karachi, and Islamabad with rapid response teams.', color: '#0ea5e9' }
+      ]; %>
+      <% features.forEach(function(f) { %>
+      <div class="col-md-6 col-lg-4" data-animate="fade-up">
+        <div class="feature-card">
+          <div class="feature-icon" style="background: <%= f.color %>22; color: <%= f.color %>">
+            <i class="bi <%= f.icon %>"></i>
+          </div>
+          <h5 class="feature-title"><%= f.title %></h5>
+          <p class="feature-desc"><%= f.desc %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA Banner ─────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box" data-animate="fade-up">
+      <div class="cta-content">
+        <h2>Ready to Fix Something Today?</h2>
+        <p>Join thousands of happy homeowners who trust FixNow for every repair.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/register" class="btn btn-cta-primary">Book a Service</a>
+        <a href="/signup"   class="btn btn-cta-outline">Create Free Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

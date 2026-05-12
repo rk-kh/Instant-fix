@@ -1,0 +1,61 @@
+<%# views/partials/header.ejs — Shared navigation header %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ─── Navbar ────────────────────────────────────────────────────────────── -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="/">
+      <span class="logo-icon"><i class="bi bi-house-gear-fill"></i></span>
+      <span class="logo-text">Fix<span class="logo-accent">Now</span></span>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item">
+          <a class="nav-link<% if (activePage === 'home') { %> active<% } %>" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link<% if (activePage === 'services') { %> active<% } %>" href="/services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link<% if (activePage === 'about') { %> active<% } %>" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link<% if (activePage === 'register') { %> active<% } %>" href="/register">Book Now</a>
+        </li>
+      </ul>
+
+      <!-- Auth Buttons -->
+      <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+        <a href="/login"  class="btn btn-outline-nav">Login</a>
+        <a href="/signup" class="btn btn-primary-nav">Sign Up</a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+<!-- ─── End Navbar ─────────────────────────────────────────────────────────── -->
