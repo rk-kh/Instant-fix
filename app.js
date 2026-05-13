@@ -6,6 +6,7 @@
 
 const express = require('express');
 const path = require('path');
+const ejs = require('ejs');
 
 // Import Routes
 const serviceRoutes = require('./routes/serviceRoutes');
